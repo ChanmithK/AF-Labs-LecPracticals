@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Window Object
+        var vehicleName = "Toyota";
+
+        function printVehicleName() {
+            console.log(this.vehicleName);
+        }
+
+        var car = {
+            vehicleName:"Nissan",
+            printName:function() {
+                return function() {
+                    console.log(this.vehicleName);
+                }
+            }
+        };
+
+        printVehicleName();
+
+        var execute = car.printName();
+        execute = execute.bind(car)
+        execute();
+    </script>
+</body>
+</html>

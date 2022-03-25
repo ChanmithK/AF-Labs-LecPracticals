@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Vehicle(name) {
+            this.name = name;
+        }
+
+        Vehicle.prototype.getName = function() {
+            return this.name;
+        }
+
+        function Car(name,model) {
+            Vehicle.call(this , name);
+            this.model = model;
+        }
+
+        ////If we do like this, After that Car function also has Vehicle cunstructor. 
+        // Car.prototype = Vehicle.prototype; 
+
+        ////So thats why we can create different object like this
+        Car.prototype = Object.create(Vehicle.prototype);
+
+        //after that we can tell use Car constructor in that object
+        Car.prototype.constructor = Car; 
+
+        Car.prototype.getModel = function() {
+            return this.model;
+        }
+
+        const car = new Car('Toyota','Sedan');
+        console.log(car.getModel())
+        console.log(car.getName())
+        console.log(Vehicle);
+        console.log(Car)
+        // console.log(Vehicle.prototype.getName() === Car.prototype.getName())
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Nested CallBack
+        function getValue(callback){
+            let value = 0;
+            setTimeout(function(){
+                value = 10;
+                //This is the anonymous function defined in line number 28
+                callback(value);
+            },1000)
+        }
+
+        function getNewValue(value, callback) {
+            setTimeout( function(){   
+                //This is the anonymous function defined in line number 30
+                callback(value*1000);
+            },1000)
+        }
+
+        //Calling the function defined at line number 11
+        getValue(function(value){
+            //Calling the function defined at line number 20
+            getNewValue(value, function(newValue) {
+                console.log(newValue)
+            })
+        })
+    
+    </script>
+</body>
+</html>

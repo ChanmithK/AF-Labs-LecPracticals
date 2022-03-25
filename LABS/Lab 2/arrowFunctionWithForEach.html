@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+        //This time without arrow function this.organization reffer the window object ==> Maths
+        var organization = 'Maths';
+
+        const person = {
+            organization: 'Science',
+            people: ['John', 'Jane'],
+            print: function() {
+                this.people.forEach(function(value){
+                    console.log(value, this.organization);
+                })
+            }
+        };
+
+        person.print();
+
+        //This time with arrow function this.organization reffer the person object ==> Science
+        var organization = 'Maths';
+
+        const person = {
+            organization: 'Science',
+            people: ['John', 'Jane'],
+            print: function() {
+                this.people.forEach(value => {
+                    console.log(value, this.organization);
+                })
+            }
+        };
+
+        person.print();
+
+    </script>
+</body>
+</html>

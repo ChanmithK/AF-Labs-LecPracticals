@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>		
+			var cars = [
+				{ brand: "Lexus", model: "ES350" },
+				{ brand: "BMW", model: "520d" },
+			];
+
+			function getCars() {
+				setTimeout(() => {
+					cars.forEach(car => {
+						console.log(car.model + "\n");
+					});
+				}, 1000);
+			}
+
+			function insertCar(car) {
+				setTimeout(() => {
+					cars.push(car);
+				}, 200);
+			}
+
+			async function init(car) {
+				await insertCar(car);
+				getCars();
+			}
+
+			init({ brand: "Audi", model: "A5" });
+		</script>
+	</body>
+</html>

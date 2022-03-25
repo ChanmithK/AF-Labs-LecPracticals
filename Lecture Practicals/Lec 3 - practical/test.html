@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Vehicle.INSTANCES = 0;
+        function Vehicle(name) {
+            this.name = name;
+            Vehicle.INSTANCES++;
+            let privateVar = 'Cannot see from the outside';
+            this.printPrivate = function () {
+                return privateVar;
+            }
+        }
+
+        
+
+        Vehicle.prototype.getName = function() {
+            return this.name;
+        }
+
+        function Car(name,model) {
+            this.model = model;
+            Vehicle.call(this,name);
+        }
+
+        Car.prototype = Object.create(Vehicle.prototype);
+        Car.prototype.constructor = Car;
+
+        Car.prototype.getModel = function() {
+            return this.model;
+        }
+
+        const car = new Car ('Micro','mx7');
+        const car1 = new Car ('Toyota','121');
+        // console.log(car.getName());
+        // console.log(car.getModel());
+
+        // console.log('Vehicle',Vehicle.prototype)
+        // console.log('Car',Car.prototype)
+        console.log(car1.INSTANCES)
+        console.log(car.printPrivate())
+    
+    </script>
+</body>
+</html>

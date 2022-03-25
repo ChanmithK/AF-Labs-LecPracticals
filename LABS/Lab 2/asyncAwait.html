@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getValue() {
+            let value = 0;
+            return new Promise(function(resolve, reject) {
+                 value = 10;
+                 setTimeout(function() {
+                    resolve(value);
+                 },1000)
+            })
+        }
+
+        function getNewValue(value) {
+            return new Promise(function(resolve, reject){
+                setTimeout(function() {
+                    resolve(value*1000);
+                 },1000)
+            })
+        }
+
+        function setValue(value){
+            return (value+1999);
+        }
+
+        async function print() {
+            let value = await getValue();
+            value = await getNewValue(value);
+            value = setValue(value)
+            const [value1, value2]= await Promise.all([getValue(), getNewValue(10)]); // like this we can execute those 2 methods in parallely
+            console.log(value)
+        }
+        print();
+
+        // async function print() {
+        //     let value = await getValue();
+        //     value = await getNewValue(value);
+        //     value = setValue(value)
+        //     return value;
+        // }
+        // print().then(function(value){
+        //     console.log(value)
+        // });
+    </script>
+</body>
+</html>

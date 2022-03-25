@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Car(name){
+            this.name = name;
+            this.getName = function(){
+                return this.name;
+            }
+        }
+        const toyota = new Car('Toyota');
+        const nissan = new Car('Nissan');
+        console.log(Car);
+        console.log(toyota);
+        console.log(toyota.getName());
+        console.log(nissan.getName());
+        console.log(toyota.getName === nissan.getName );
+    </script>
+</body>
+</html>
